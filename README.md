@@ -1,31 +1,85 @@
-# RideEasy — 30-minute deployment starter
+# 🚕 RideEasy – Cloud-Based Cab Booking System
 
-A responsive cab-booking demo. It starts in preview mode and can be connected to Firebase Firestore.
+RideEasy is a cloud-based cab booking web application that allows users to book cabs, calculate estimated fares, and view ride status updates. Administrators can manage bookings, assign drivers, and update estimated arrival times.
 
-## Quick local preview
-1. Open this folder in VS Code.
-2. Use the **Live Server** extension to serve `index.html` (ES modules usually do not work reliably when opening the file directly).
-3. Submit a sample booking. Until Firebase is configured, the app displays a demo reference and explicitly says the booking was not saved.
+The project uses Amazon S3 for website hosting and Firebase for authentication and database management.
 
-## Connect Firebase Firestore
-1. Open https://console.firebase.google.com/ and create a project.
-2. Add a Web App in Project settings and copy its Firebase web config.
-3. In Firebase, create a Firestore database.
-4. Replace the placeholder values in `app.js`'s `firebaseConfig`.
-5. Configure Firestore Security Rules before allowing writes. Do NOT use unrestricted public read/write rules. For a quick class demo, create rules that only permit the operations you explicitly intend, and do not store real customer information.
-6. Serve the site over HTTP/HTTPS and test a booking. A successful submission returns a Firestore document ID.
+## ✨ Features
 
-**Security note:** Firebase web configuration is visible in the browser by design. Security must be enforced with Firestore Rules and, for private/admin views, authentication. Do not put service-account keys or private credentials in frontend files.
+### 👤 User Features
+- User registration and login
+- Cab booking between supported cities
+- Automatic fare estimation
+- Personal booking dashboard
+- Booking status updates
+- View assigned driver name and ETA
 
-## Deploy static files to Amazon S3
-1. Create an S3 bucket in your chosen region.
-2. Upload `index.html`, `style.css`, and `app.js` (keep their paths together).
-3. Enable Static website hosting and set the index document to `index.html`.
-4. S3 website endpoints use HTTP. For HTTPS, consider CloudFront and review pricing first.
-5. To make a direct S3 website publicly accessible, public read access is required. Only publish intended website assets; never upload secrets or private data.
+### 🛠️ Admin Features
+- Dedicated administrator login
+- View customer bookings
+- Update booking status
+- Assign driver names
+- Set estimated arrival times
+- Manage ride progress
 
-## Important limitations
-- Fare is a demo flat estimate by cab type, not calculated from real route distance.
-- No real driver dispatch, GPS tracking, payment, or authentication is implemented.
-- The starter does not include an admin bookings screen; adding one safely requires authentication and appropriate Firestore rules.
-- AWS/Firebase charges depend on account eligibility, configuration, and usage. Check current pricing and set billing alerts.
+## 🏙️ Supported Cities
+
+- Kopargaon
+- Shirdi
+- Nashik
+- Ahmednagar
+- Chhatrapati Sambhajinagar
+- Pune
+- Mumbai
+
+*Distances are predefined demonstration estimates, not live map calculations.*
+
+## 💰 Demo Fare Calculation
+
+| Cab Type | Base Fare | Rate per km |
+|---|---:|---:|
+| Mini | ₹50 | ₹12 |
+| Sedan | ₹80 | ₹16 |
+| SUV | ₹120 | ₹22 |
+
+**Estimated Fare = Base Fare + (Distance × Rate per km)**
+
+These rates are illustrative and are not connected to a real taxi service.
+
+## 🛠️ Technologies Used
+
+**Frontend**
+- HTML5
+- CSS3
+- JavaScript
+
+**Cloud Hosting**
+- Amazon S3 Static Website Hosting
+
+**Authentication and Database**
+- Firebase Authentication
+- Cloud Firestore
+
+## 🏗️ System Architecture
+
+1. Users access the website through the Amazon S3 website endpoint.
+2. Firebase Authentication manages user and administrator login.
+3. Users submit cab booking requests.
+4. Cloud Firestore stores user profiles and booking information.
+5. Administrators update booking status, driver details, and ETA.
+6. Users view their booking information through the dashboard.
+
+## 🚀 Run the Project Locally
+
+### Prerequisites
+- Visual Studio Code
+- A modern web browser
+- Live Server extension
+- A Firebase project
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/RideEasy-Cab-Booking-System.git
