@@ -82,4 +82,4 @@ These rates are illustrative and are not connected to a real taxi service.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/RideEasy-Cab-Booking-System.git
+   git clone https://github.com/sandipjadhav87/RideEasy-Cab-Booking-System.git
