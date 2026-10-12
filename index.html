@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RideEasy — Book your ride</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">R</span><span>RideEasy</span></a>
+  <div class="top-right"><span class="cloud-pill"><i></i> Cloud-powered demo</span><button id="logoutBtn" class="ghost hidden">Log out</button></div>
+</header>
+
+<main>
+  <section id="authView" class="auth-layout">
+    <div class="auth-copy">
+      <p class="eyebrow">YOUR CITY. YOUR RIDE.</p>
+      <h1>Move around.<br><span>Feel in control.</span></h1>
+      <p>Book a demo ride, follow its status, and see updates from the RideEasy admin dashboard.</p>
+      <div class="feature-list"><div><b>01</b><span>City-to-city fare estimates</span></div><div><b>02</b><span>Booking status updates</span></div><div><b>03</b><span>Separate user and admin access</span></div></div>
+    </div>
+    <div class="auth-card">
+      <div class="tabs"><button class="tab active" data-role="user">User login</button><button class="tab" data-role="admin">Admin login</button></div>
+      <p class="eyebrow" id="authEyebrow">WELCOME BACK</p><h2 id="authTitle">Sign in to RideEasy</h2>
+      <p class="muted" id="authDescription">Book a ride and track its status.</p>
+      <form id="authForm">
+        <label for="email">Email address</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com" required>
+        <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters" required>
+        <button class="primary full" id="authSubmit" type="submit">Sign in <span>→</span></button>
+      </form>
+      <p class="switch-line" id="switchLine">New to RideEasy? <button id="toggleSignup" class="text-button">Create an account</button></p>
+      <p id="authMessage" class="notice" role="status" aria-live="polite"></p>
+      <p class="tiny">Demo application only. No real driver is dispatched.</p>
+    </div>
+  </section>
+
+  <section id="userView" class="dashboard hidden">
+    <div class="page-heading"><div><p class="eyebrow">RIDE DASHBOARD</p><h1>Where to today?</h1><p class="muted">Choose a route to see its estimated distance and fare.</p></div><div class="user-chip"><span class="avatar">U</span><span id="userEmailLabel">User</span></div></div>
+    <div class="user-grid">
+      <section class="panel booking-panel">
+        <div class="panel-heading"><div><p class="eyebrow">NEW TRIP</p><h2>Book a ride</h2></div><span class="panel-icon">↗</span></div>
+        <form id="bookingForm">
+          <label for="pickup">Pickup city</label><select id="pickup" required></select>
+          <div class="route-divider"><span></span><small>YOUR ROUTE</small><span></span></div>
+          <label for="destination">Destination city</label><select id="destination" required></select>
+          <div class="route-summary"><div><span class="summary-label">Approx. road distance</span><strong id="distanceLabel">— km</strong></div><div><span class="summary-label">Estimated fare</span><strong id="fareLabel">₹—</strong></div></div>
+          <label for="cabType">Choose your cab</label><div class="cab-options">
+            <label class="cab-option"><input type="radio" name="cabType" value="Mini" checked><span class="cab-emoji">🚗</span><span><b>Mini</b><small>Affordable</small></span></label>
+            <label class="cab-option"><input type="radio" name="cabType" value="Sedan"><span class="cab-emoji">🚘</span><span><b>Sedan</b><small>Comfort</small></span></label>
+            <label class="cab-option"><input type="radio" name="cabType" value="SUV"><span class="cab-emoji">🚙</span><span><b>SUV</b><small>More space</small></span></label>
+          </div>
+          <button id="bookBtn" class="primary full" type="submit">Confirm booking <span>→</span></button>
+          <p class="tiny">Fares use sample city-to-city distances and demo rates, not live map routing.</p>
+          <p id="bookingMessage" class="notice" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="panel trips-panel">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR BOOKINGS</p><h2>Ride history & tracking</h2></div><button id="refreshUser" class="icon-button" title="Refresh bookings">↻</button></div>
+        <p class="muted small">Your ride status updates appear here after the admin changes them.</p>
+        <div id="userBookings" class="booking-list"><div class="empty">Your bookings will appear here.</div></div>
+      </section>
+    </div>
+  </section>
+
+  <section id="adminView" class="dashboard hidden">
+    <div class="page-heading"><div><p class="eyebrow">CONTROL CENTRE</p><h1>Admin dashboard</h1><p class="muted">Manage bookings and publish status / arrival-time updates.</p></div><div class="admin-badge">ADMIN ACCESS</div></div>
+    <div class="stats-row"><div class="stat-card"><span>Total bookings</span><strong id="totalBookings">0</strong></div><div class="stat-card"><span>Pending</span><strong id="pendingBookings">0</strong></div><div class="stat-card"><span>Active rides</span><strong id="activeBookings">0</strong></div></div>
+    <section class="panel admin-panel"><div class="panel-heading"><div><p class="eyebrow">ALL CUSTOMERS</p><h2>Booking management</h2></div><button id="refreshAdmin" class="icon-button" title="Refresh bookings">↻</button></div><div id="adminBookings" class="admin-list"><div class="empty">Bookings will appear here.</div></div></section>
+    <p id="adminMessage" class="notice" role="status" aria-live="polite"></p>
+  </section>
+</main>
+<footer><a class="brand" href="#"><span class="brand-mark">R</span><span>RideEasy</span></a><p>Cloud Computing Project · AWS hosting + Firebase database</p></footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

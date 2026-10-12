@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+serviceAccountKey.json
+firebase-adminsdk*.json
+
+.DS_Store
+Thumbs.db
